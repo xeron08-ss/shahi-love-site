@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Shahi 💖</title>
+
+<style>
+
+/* 🌸 Background */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: bg 10s ease infinite;
+}
+
+@keyframes bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 💍 Button */
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4b5c;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* 🎉 Popup */
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 5;
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* 🎁 Gift */
+.gift-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 2;
+}
+
+.gift-box {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: #ff4b5c;
+    border-radius: 10px;
+}
+
+.lid {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background: #ff1e3c;
+    top: -30px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.open .lid {
+    transform: translateY(-70px) rotate(-15deg);
+}
+
+/* 💌 Card */
+.card {
+    position: absolute;
+    bottom: 140px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+
+    width: 380px;
+    max-height: 500px;
+    overflow-y: auto;
+
+    padding: 25px;
+    background: white;
+    border-radius: 20px;
+
+    text-align: center;
+    font-family: cursive;
+    font-size: 1rem;
+    line-height: 1.7;
+
+    color: #ff4b5c;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.show-card {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* 💕 Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+}
+
+/* ✨ Glow text */
+.glow {
+    color: #ff4b5c;
+    text-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop preload="auto">
+    <source src="love.mp3" type="audio/mp3">
+</audio>
+</audio>
+
+<!-- 🎉 Popup -->
+<div class="popup" id="popup">
+    <div class="popup-box">
+        <h2 class="glow">💖 WELCOME SHAHI JIII!! 💖</h2>
+        <p>😘💕🥰✨🌸💍</p>
+        <button onclick="start()">Enter 💌</button>
+    </div>
+</div>
+
+<!-- 💍 Button -->
+<button onclick="openGift()">Forever Yours 💍</button>
+
+<!-- 🎁 Gift -->
+<div class="gift-container" id="gift">
+    <div class="gift-box">
+        <div class="lid"></div>
+        <div class="box"></div>
+    </div>
+
+    <div class="card" id="card">
+        <h2 class="glow">💖 For My Shahi 💖</h2>
+        <p id="text"></p>
+    </div>
+</div>
+
+<script>
+
+function start() {
+    document.getElementById("popup").style.display = "none";
+
+    let music = document.getElementById("music");
+    music.volume = 0.4;
+    music.play();
+
+    createHearts();
+}
+
+function openGift() {
+    document.getElementById("gift").style.display = "block";
+
+    setTimeout(() => {
+        document.querySelector(".gift-box").classList.add("open");
+    }, 300);
+
+    setTimeout(() => {
+        document.getElementById("card").classList.add("show-card");
+        typeText();
+    }, 900);
+}
+
+function typeText() {
+    const text = `Hey.... MERI JAAN... I LOVE YOU SO MUCH BABY😘...
+
+TUM MERI JAAN HO, TUM MUJHE EK NAZAR ME PASAND AA GAYI...
+TUM HAMESHA MERE LIYE KHAS RAHOGI BABY...
+
+HAM TUMKO HAMESHA KHUSH DEKHNA CHAHTE HAIN...
+HAM TUMHARE FACE PE HAMESHA EK MUSKAN DEKHNA CHAHTE HAIN...
+HAM BHALE NA RAHEIN BUT TUMKO KHUSH DEKHNA CHAHTE HAIN MERI JAAN🥺
+
+MERI SHAHI...
+TUM HAMESHA MERI HO OR RAHOGI ❤️
+
+AAGE CHAHE JITNI BHI PROBLEMS AAYEIN...
+HAM DONO SATH ME USKA SOLUTION KARENGE...
+
+BAHOT LOG HAMARE RELATIONSHIP KO KHARAB KARNA CHAHENGE...
+BUT HAM DONO KO HAMESHA EK SATH REHNA HAI 💕
+
+HAM TUMHARE SATH APNI PURI ZINDAGI BITANA CHAHTE HAIN...
+HAM TUMHARE SATH HAR JAGAH GHUMNA CHAHTE HAIN BABY😘
+
+WADA KARO TUM HAMESHA MERE SATH RAHOGI...
+WADA KARO HAM DONO KABHI ALAG NAHI HONGE...
+WADA KARO TUM HAMESHA MUJHSE PYAR KAROGI...
+
+WADA KARO HAM IN SHA ALLAH SHADI KARENGE 🥰
+WADA KARO TUM MERI BEGUM BANOGI 👉👈
+
+💞 I LOVE YOU MERI JAAN 💞
+MOHABBAT, DAULAT 😘😘😘😘😘😘`;
+
+    let i = 0;
+    const el = document.getElementById("text");
+
+    function typing() {
+        if (i < text.length) {
+            el.innerHTML += text[i] === "\n" ? "<br>" : text[i];
+            i++;
+            el.scrollTop = el.scrollHeight;
+            setTimeout(typing, 8);
+        }
+    }
+
+    typing();
+}
+
+/* 💕 Hearts */
+function createHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (15 + Math.random()*20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+
+</script>
+
+</body>
+</html>
